@@ -39,4 +39,26 @@ public class Persona {
     @Size(min = 1, max = 400, message = "no cumple con la longitud")
     private String img;
     
+    @Size(min = 1, max = 400, message = "no cumple con la longitud")
+    private String email;
+    
+    @Size(min = 1, max = 400, message = "no cumple con la longitud")
+    private String curriculum;
+
+    public Persona() {
+    }
+
+    public Persona(String nombre, String apellido, String titulo, String sobreMi, String banner, String img, String email, String curriculum) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.titulo = titulo;
+        this.sobreMi = sobreMi;
+        this.banner = banner;
+        this.img = img;
+        this.email = email;
+        this.curriculum = curriculum;
+    }
+    
+    
+    
 }

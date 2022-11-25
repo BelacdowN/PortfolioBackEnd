@@ -1,25 +1,15 @@
 
 package com.portfoliohcc.hcc.Dto;
 
-import javax.validation.constraints.NotBlank;
-
 
 public class DtoExperiencia {
-    @NotBlank
     private String puesto;
-    @NotBlank
     private String inicio;
-    
     private String fin;   
-    @NotBlank
     private String descripcion;  
-    @NotBlank
     private String imagen;
-    @NotBlank
     private String url;
-    @NotBlank
     private String empresa;
-    @NotBlank
     private boolean esTrabajoActual;
 
     public DtoExperiencia() {
