@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface REstudio extends JpaRepository<Estudio, Integer>{
-    public Optional<Estudio> findByTitulo (String titulo);
-    public boolean existsByTitulo (String titulo);
+    public Optional<Estudio> findByEstudio (String estudio);
+    public boolean existsByEstudio (String estudio);
 }

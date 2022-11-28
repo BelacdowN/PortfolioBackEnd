@@ -24,8 +24,8 @@ public class SEstudio {
         return rEstudio.findById(id);
     }
     
-    public Optional<Estudio> getByTitulo (String titulo){
-        return rEstudio.findByTitulo(titulo);  
+    public Optional<Estudio> getByEstudio (String estudio){
+        return rEstudio.findByEstudio(estudio);  
     }
     
     public void save(Estudio estu){
@@ -40,8 +40,8 @@ public class SEstudio {
          return rEstudio.existsById(id);
      }
      
-     public boolean existsByTitulo (String titulo){
-         return rEstudio.existsByTitulo(titulo);
+     public boolean existsByEstudio (String estudio){
+         return rEstudio.existsByEstudio(estudio);
      }
     
 }
