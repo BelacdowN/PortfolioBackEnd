@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,12 +17,15 @@ public class Habilidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String habilidad;
-    private String porcentaje;
+    
+    @Min(0)
+    @Max(100)
+    private int porcentaje;
 
     public Habilidad() {
     }
 
-    public Habilidad(String habilidad, String porcentaje) {
+    public Habilidad(String habilidad, int porcentaje) {
         this.habilidad = habilidad;
         this.porcentaje = porcentaje;
     }

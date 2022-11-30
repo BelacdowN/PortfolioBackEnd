@@ -1,10 +1,14 @@
 
 package com.portfoliohcc.hcc.Entity;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Temporal;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,16 +21,25 @@ public class Proyecto {
     private int id;
     
     private String proyecto;
-    private String inicio;
-    private String fin;    
-    private String descripcion;    
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date inicio;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fin; 
+    
+    @Lob //longtext
+    private String descripcion;
+    
+    @Size(max=100)
     private String imagen;
+    
     private String url;
 
     public Proyecto() {
     }
 
-    public Proyecto(String proyecto, String inicio, String fin, String descripcion, String imagen, String url) {
+    public Proyecto(String proyecto, Date inicio, Date fin, String descripcion, String imagen, String url) {
         this.proyecto = proyecto;
         this.inicio = inicio;
         this.fin = fin;

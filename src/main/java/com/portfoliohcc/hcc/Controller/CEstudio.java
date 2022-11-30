@@ -51,7 +51,7 @@ public class CEstudio {
                 dtoEst.getFin(), dtoEst.getDescripcion(), dtoEst.getImagen(), dtoEst.getUrl(),
                 dtoEst.getInstitucion());
         sEstudio.save(estudio);
-        return new ResponseEntity(new Mensaje("Estudio creada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Estudio creado"), HttpStatus.OK);
     }
     
     @PutMapping("/update/{id}")
@@ -71,7 +71,7 @@ public class CEstudio {
         estudio.setUrl(dtoEst.getUrl());
         estudio.setInstitucion(dtoEst.getInstitucion());
         sEstudio.save(estudio);
-        return new ResponseEntity(new Mensaje("Estudio modificada correctamente"), HttpStatus.OK);        
+        return new ResponseEntity(new Mensaje("Estudio modificado correctamente"), HttpStatus.OK);        
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable ("id") int id){
@@ -79,7 +79,7 @@ public class CEstudio {
             return new ResponseEntity(new Mensaje("El id no existe"), HttpStatus.BAD_REQUEST);
         }
         sEstudio.delete(id);
-        return new ResponseEntity(new Mensaje("Estudio eliminada correctamente"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Estudio eliminado correctamente"), HttpStatus.OK);
     }
     
 }

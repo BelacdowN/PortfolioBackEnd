@@ -1,10 +1,13 @@
 
 package com.portfoliohcc.hcc.Entity;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +19,11 @@ public class Estudio {
     private int id;
     
     private String estudio;
-    private String inicio;
-    private String fin;    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date inicio;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fin; 
+    @Lob
     private String descripcion;    
     private String imagen;
     private String url;
@@ -26,7 +32,7 @@ public class Estudio {
     public Estudio() {
     }
 
-    public Estudio(String estudio, String inicio, String fin, String descripcion, String imagen, String url, String institucion) {
+    public Estudio(String estudio, Date inicio, Date fin, String descripcion, String imagen, String url, String institucion) {
         this.estudio = estudio;
         this.inicio = inicio;
         this.fin = fin;
@@ -35,6 +41,9 @@ public class Estudio {
         this.url = url;
         this.institucion = institucion;
     }
-    
+
+   
+
+   
     
 }
