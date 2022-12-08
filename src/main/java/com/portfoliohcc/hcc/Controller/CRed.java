@@ -1,8 +1,8 @@
 
 package com.portfoliohcc.hcc.Controller;
 
-import com.portfoliohcc.hcc.Entity.Estudio;
-import com.portfoliohcc.hcc.Service.SEstudio;
+import com.portfoliohcc.hcc.Entity.Red;
+import com.portfoliohcc.hcc.Service.SRed;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,43 +18,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("estudio")
+@RequestMapping("red")
 @CrossOrigin(origins = "http://localhost:4200")
-public class CEstudio {
+public class CRed {
+    
     @Autowired
-    SEstudio sEstudio;
+    SRed sRed;
     
     
     @GetMapping ("/lista")
-    public ResponseEntity<List<Estudio>> list(){
-        List<Estudio> list = sEstudio.list();
+    public ResponseEntity<List<Red>> list(){
+        List<Red> list = sRed.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
       //lista de relojes por id de persona
     @GetMapping ("/persona/{id}/lista")
-    public List <Estudio> findByPersonaId(@PathVariable Long id){
-        return sEstudio.findByPersonaId(id);    
+    public List <Red> findByPersonaId(@PathVariable Long id){
+        return sRed.findByPersonaId(id);    
         }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Estudio> getById(@PathVariable("id") int id){
-        Estudio estu = sEstudio.getOne(id);
-        return new ResponseEntity(estu, HttpStatus.OK);
+    public ResponseEntity<Red> getById(@PathVariable("id") int id){
+        Red red = sRed.getOne(id);
+        return new ResponseEntity(red, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public void create(@RequestBody Estudio estu) {      
-        sEstudio.save(estu);
+    public void create(@RequestBody Red red) {      
+        sRed.save(red);
     }
     
       @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable ("id") int id){
-        sEstudio.delete(id);
+        sRed.delete(id);
     }
     
     @PutMapping("/update")
-    public void edit(@RequestBody Estudio estu) {      
-        sEstudio.save(estu);
+    public void edit(@RequestBody Red red) {      
+        sRed.save(red);
     }
+    
 }

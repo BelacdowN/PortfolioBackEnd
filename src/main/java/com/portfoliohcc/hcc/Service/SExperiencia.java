@@ -4,7 +4,6 @@ package com.portfoliohcc.hcc.Service;
 import com.portfoliohcc.hcc.Entity.Experiencia;
 import com.portfoliohcc.hcc.Repository.RExperiencia;
 import java.util.List;
-import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +19,11 @@ public class SExperiencia {
         return rExperiencia.findAll();
     }
     
-    public Optional<Experiencia> getOne(int id){
-        return rExperiencia.findById(id);
+    public Experiencia getOne(int id){
+        Experiencia expe = rExperiencia.findById(id).orElse(null);
+        return expe;
     }
-    
-    public Optional<Experiencia> getByPuesto (String puesto){
-        return rExperiencia.findByPuesto(puesto);  
-    }
+       
     
     public void save(Experiencia expe){
         rExperiencia.save(expe);
@@ -36,11 +33,13 @@ public class SExperiencia {
         rExperiencia.deleteById(id);
     }
     
-     public boolean existsById (int id){
-         return rExperiencia.existsById(id);
-     }
-     
-     public boolean existsByPuesto (String puesto){
-         return rExperiencia.existsByPuesto(puesto);
-     }
+    public void edit(Experiencia expe){
+        rExperiencia.save(expe);
+    }
+    
+    //busca lista de relojes por la id de la persona
+    public List<Experiencia> findByPersonaId(Long personaId) {
+        return rExperiencia.findByPersonaId(personaId);
+    }
+    
 }

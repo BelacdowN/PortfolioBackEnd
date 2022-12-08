@@ -20,12 +20,9 @@ public class SEstudio {
         return rEstudio.findAll();
     }
     
-    public Optional<Estudio> getOne(int id){
-        return rEstudio.findById(id);
-    }
-    
-    public Optional<Estudio> getByEstudio (String estudio){
-        return rEstudio.findByEstudio(estudio);  
+    public Estudio getOne(int id){
+        Estudio expe = rEstudio.findById(id).orElse(null);
+        return expe;
     }
     
     public void save(Estudio estu){
@@ -36,12 +33,13 @@ public class SEstudio {
         rEstudio.deleteById(id);
     }
     
-     public boolean existsById (int id){
-         return rEstudio.existsById(id);
-     }
-     
-     public boolean existsByEstudio (String estudio){
-         return rEstudio.existsByEstudio(estudio);
-     }
+    public void edit(Estudio estu){
+        rEstudio.save(estu);
+    }
+    
+     //busca lista de relojes por la id de la persona
+    public List<Estudio> findByPersonaId(Long personaId) {
+        return rEstudio.findByPersonaId(personaId);
+    }
     
 }

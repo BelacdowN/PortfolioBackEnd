@@ -4,7 +4,6 @@ package com.portfoliohcc.hcc.Service;
 import com.portfoliohcc.hcc.Entity.Persona;
 import com.portfoliohcc.hcc.Repository.IPersonaRepository;
 import java.util.List;
-import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,30 +18,24 @@ public class ImpPersonaService  {
         return rPersona.findAll();
     }
     
-    public Optional<Persona> getOne(Long id){
-        return rPersona.findById(id);
-    }
-    
-    public Optional<Persona> getByNombre (String nombre){
-        return rPersona.findByNombre(nombre);  
-    }
+    public Persona getOne(Long id){
+        Persona perso = rPersona.findById(id).orElse(null);
+        return perso;
+    }    
+   
     
     public void save(Persona pers){
         rPersona.save(pers);
-    }  
+    }      
     
-    
+   
      public void delete(Long id){
         rPersona.deleteById(id);
-    }
-    
-     public boolean existsById (Long id){
-         return rPersona.existsById(id);
-     }
+    }    
      
-     public boolean existsByNombre (String nombre){
-         return rPersona.existsByNombre(nombre);
-     }
+     public void edit(Persona pers){
+        rPersona.save(pers);
+    }  
+       
    
-    
 }

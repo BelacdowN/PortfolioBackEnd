@@ -21,13 +21,10 @@ public class SHabilidad {
         return rHabilidad.findAll();
     }
     
-    public Optional<Habilidad> getOne(int id){
-        return rHabilidad.findById(id);
+    public Habilidad getOne(int id){
+        return rHabilidad.findById(id).orElse(null);
     }
-    
-    public Optional<Habilidad> getByHabilidad (String habilidad){
-        return rHabilidad.findByHabilidad(habilidad);  
-    }
+        
     
     public void save(Habilidad habi){
         rHabilidad.save(habi);
@@ -37,12 +34,12 @@ public class SHabilidad {
         rHabilidad.deleteById(id);
     }
     
-     public boolean existsById (int id){
-         return rHabilidad.existsById(id);
-     }
-     
-     public boolean existsByHabilidad (String habilidad){
-         return rHabilidad.existsByHabilidad(habilidad);
-     }
+     public void edit(Habilidad habi){
+        rHabilidad.save(habi);
+    }
     
+     //busca lista de relojes por la id de la persona
+    public List<Habilidad> findByPersonaId(Long personaId) {
+        return rHabilidad.findByPersonaId(personaId);
+    }
 }

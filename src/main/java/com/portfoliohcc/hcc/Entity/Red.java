@@ -8,39 +8,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-public class Habilidad {
+public class Red {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String habilidad;
+    private String nombre;
+    private String url;
+    private String icono;
     
-    @Min(0)
-    @Max(100)
-    private int porcentaje;
-    
-    //relacion
+   //relacion
     @ManyToOne
     //creacion de columna con llave foranea
     @JoinColumn(name = "personaid", insertable=false, updatable=false)
-    //para que se borre si se borra la persona
-    @OnDelete(action = OnDeleteAction.CASCADE)
+   //para que se borre si se borra la persona
+   @OnDelete(action = OnDeleteAction.CASCADE)
     private Persona persona;
     
     private Long personaid;
 
-
-    public Habilidad() {
+    public Red() {
     }
 
-    public Habilidad(String habilidad, int porcentaje, Persona persona) {
-        this.habilidad = habilidad;
-        this.porcentaje = porcentaje;
+    public Red(String nombre, String url, String icono, Persona persona) {
+        this.nombre = nombre;
+        this.url = url;
+        this.icono = icono;
         this.persona = persona;
     }
 
@@ -52,22 +48,31 @@ public class Habilidad {
         this.id = id;
     }
 
-    public String getHabilidad() {
-        return habilidad;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setHabilidad(String habilidad) {
-        this.habilidad = habilidad;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getPorcentaje() {
-        return porcentaje;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPorcentaje(int porcentaje) {
-        this.porcentaje = porcentaje;
+    public void setUrl(String url) {
+        this.url = url;
     }
-     //Opción para que no haga un bug
+
+    public String getIcono() {
+        return icono;
+    }
+
+    public void setIcono(String icono) {
+        this.icono = icono;
+    }
+
+    //Opción para que no haga un bug
     @JsonBackReference
     public Persona getPersona() {
         return persona;
@@ -84,6 +89,10 @@ public class Habilidad {
     public void setPersonaid(Long personaid) {
         this.personaid = personaid;
     }
+
+   
+
+    
     
     
 }
