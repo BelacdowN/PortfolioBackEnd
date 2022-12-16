@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
@@ -21,13 +22,14 @@ public class Estudio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+    @NotNull
     private String estudio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date inicio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fin; 
     @Lob
+    @NotNull
     private String descripcion;    
     private String imagen;
     private String url;

@@ -25,19 +25,19 @@ public class CProyecto {
     SProyecto sProyecto;
     
     @GetMapping ("/lista")
-    public ResponseEntity<List<Proyecto>> list(){
+    public ResponseEntity<List<Proyecto>> lista(){
         List<Proyecto> list = sProyecto.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
      //lista de relojes por id de persona
     @GetMapping ("/persona/{id}/lista")
-    public List <Proyecto> findByPersonaId(@PathVariable Long id){
+    public List <Proyecto> listaPer(@PathVariable Long id){
         return sProyecto.findByPersonaId(id);    
         }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Proyecto> getById(@PathVariable("id") int id){
+    public ResponseEntity<Proyecto> detail(@PathVariable("id") int id){
         Proyecto proye = sProyecto.getOne(id);
         return new ResponseEntity(proye, HttpStatus.OK);
     }
@@ -55,7 +55,7 @@ public class CProyecto {
     
     @PutMapping("/update")
     public void edit(@RequestBody Proyecto proye) {
-        sProyecto.save(proye);
+        sProyecto.edit(proye);
     }
     
 }

@@ -31,29 +31,29 @@ public class PersonaController {
     }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Persona> getById(@PathVariable("id") Long id){
+    public ResponseEntity<Persona> detail(@PathVariable("id") Long id){
         Persona perso = IPersonaService.getOne(id);
         return new ResponseEntity(perso, HttpStatus.OK);
     }       
     
     
     @PostMapping("/create")
-    public void createPersona(@RequestBody Persona persona){
+    public void save(@RequestBody Persona persona){
         IPersonaService.save(persona);
     }
     
    
     @DeleteMapping("/delete/{id}")
-    public void deletePersona(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         IPersonaService.delete(id);
     }
     
     @PutMapping("/update")
-    public void editarPersona(@RequestBody Persona persona){
+    public void edit(@RequestBody Persona persona){
         IPersonaService.edit(persona);
     }
         
-    
+   
   
     
 }

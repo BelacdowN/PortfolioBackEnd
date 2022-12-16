@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -20,7 +21,7 @@ public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+    @NotNull
     private String proyecto;
     
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -30,6 +31,7 @@ public class Proyecto {
     private Date fin; 
     
     @Lob //longtext
+    @NotNull
     private String descripcion;
     
     

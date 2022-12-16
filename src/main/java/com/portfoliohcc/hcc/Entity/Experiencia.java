@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -20,7 +21,7 @@ public class Experiencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+    @NotNull
     private String puesto;
     
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -29,6 +30,7 @@ public class Experiencia {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fin; 
     
+    @NotNull
     @Lob   
     private String descripcion;
     
@@ -37,6 +39,7 @@ public class Experiencia {
     private String url;
     
     private String empresa;
+    
     private boolean esTrabajoActual;
     
      //relacion

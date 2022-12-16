@@ -33,22 +33,22 @@ public class CEstudio {
     
       //lista de relojes por id de persona
     @GetMapping ("/persona/{id}/lista")
-    public List <Estudio> findByPersonaId(@PathVariable Long id){
+    public List <Estudio> listaPer(@PathVariable Long id){
         return sEstudio.findByPersonaId(id);    
         }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Estudio> getById(@PathVariable("id") int id){
+    public ResponseEntity<Estudio> detail(@PathVariable("id") int id){
         Estudio estu = sEstudio.getOne(id);
         return new ResponseEntity(estu, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public void create(@RequestBody Estudio estu) {      
+    public void save(@RequestBody Estudio estu) {      
         sEstudio.save(estu);
     }
     
-      @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable ("id") int id){
         sEstudio.delete(id);
     }

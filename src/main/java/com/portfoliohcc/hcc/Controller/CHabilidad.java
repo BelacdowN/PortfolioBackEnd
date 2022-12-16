@@ -25,25 +25,25 @@ public class CHabilidad {
     SHabilidad sHabilidad;
     
     @GetMapping ("/lista")
-    public ResponseEntity<List<Habilidad>> list(){
+    public ResponseEntity<List<Habilidad>> lista(){
         List<Habilidad> list = sHabilidad.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
      //lista de relojes por id de persona
     @GetMapping ("/persona/{id}/lista")
-    public List <Habilidad> findByPersonaId(@PathVariable Long id){
+    public List <Habilidad> listaPer(@PathVariable Long id){
         return sHabilidad.findByPersonaId(id);    
         }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Habilidad> getById(@PathVariable("id") int id){
+    public ResponseEntity<Habilidad> detail(@PathVariable("id") int id){
         Habilidad habilidad = sHabilidad.getOne(id);
         return new ResponseEntity(habilidad, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public void create(@RequestBody Habilidad habi) {
+    public void save(@RequestBody Habilidad habi) {
         sHabilidad.save(habi);
     }
     

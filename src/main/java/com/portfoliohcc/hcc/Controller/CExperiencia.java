@@ -26,29 +26,29 @@ public class CExperiencia {
     
     
     @GetMapping ("/lista")
-    public ResponseEntity<List<Experiencia>> list(){
+    public ResponseEntity<List<Experiencia>> lista(){
         List<Experiencia> list = sExperiencia.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
-      //lista de relojes por id de persona
+      //lista de experiencias por id de persona
     @GetMapping ("/persona/{id}/lista")
-    public List <Experiencia> findByPersonaId(@PathVariable Long id){
+    public List <Experiencia> listaPer(@PathVariable Long id){
         return sExperiencia.findByPersonaId(id);    
         }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Experiencia> getById(@PathVariable("id") int id){
+    public ResponseEntity<Experiencia> detail(@PathVariable("id") int id){
         Experiencia expe = sExperiencia.getOne(id);
         return new ResponseEntity(expe, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public void create(@RequestBody Experiencia expe) {      
+    public void save(@RequestBody Experiencia expe) {      
         sExperiencia.save(expe);
     }
     
-      @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable ("id") int id){
         sExperiencia.delete(id);
     }
@@ -57,5 +57,7 @@ public class CExperiencia {
     public void edit(@RequestBody Experiencia expe) {      
         sExperiencia.save(expe);
     }
+    
+    
     
 }
