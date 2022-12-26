@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("estudio")
-@CrossOrigin(origins = "https://front-hcc.web.app")
+@CrossOrigin(origins = {"https://front-hcc.web.app","https://localhost:4200"})
 public class CEstudio {
     @Autowired
     SEstudio sEstudio;
