@@ -2,6 +2,7 @@
 package com.portfoliohcc.hcc.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,11 +22,9 @@ public class Red {
     private String icono;
     
    //relacion
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     //creacion de columna con llave foranea
-    @JoinColumn(name = "personaid", insertable=false, updatable=false)
-   //para que se borre si se borra la persona
-   @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "personaid")
     private Persona persona;
     
     private Long personaid;
