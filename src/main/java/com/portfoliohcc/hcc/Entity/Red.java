@@ -24,7 +24,7 @@ public class Red {
    //relacion
     @ManyToOne (cascade = CascadeType.ALL)
     //creacion de columna con llave foranea
-    @JoinColumn(name = "personaid")
+    @JoinColumn(name = "personaid", insertable=false, updatable=false)
     private Persona persona;
     
     private Long personaid;
